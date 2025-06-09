@@ -1,14 +1,15 @@
 
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Heart, Smartphone, QrCode, Skull } from "lucide-react";
+import { ShoppingCart, Heart, Smartphone, QrCode, Skull, Plus } from "lucide-react";
 import { useState, useEffect } from "react";
+import Cart, { CartItem } from "./Cart";
 
 const Menu = () => {
   const [likedItems, setLikedItems] = useState<number[]>([]);
   const [fireParticles, setFireParticles] = useState<Array<{id: number, delay: number}>>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    // Generate more fire particles for rock effect
     const particles = Array.from({length: 12}, (_, i) => ({
       id: i,
       delay: Math.random() * 2
@@ -24,15 +25,48 @@ const Menu = () => {
     );
   };
 
-  const handleOrder = (itemName: string) => {
-    const whatsappNumber = "5511999999999";
-    const message = `Olá! Gostaria de pedir: ${itemName}`;
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+  const addToCart = (item: any) => {
+    const cartItem: CartItem = {
+      id: `${item.name}-${Date.now()}`,
+      name: item.name,
+      price: parseFloat(item.price.replace('R$ ', '').replace(',', '.')),
+      quantity: 1
+    };
+
+    setCartItems(prev => {
+      const existingItem = prev.find(i => i.name === cartItem.name);
+      if (existingItem) {
+        return prev.map(i => 
+          i.name === cartItem.name 
+            ? { ...i, quantity: i.quantity + 1 }
+            : i
+        );
+      }
+      return [...prev, cartItem];
+    });
+  };
+
+  const updateCartQuantity = (id: string, quantity: number) => {
+    if (quantity === 0) {
+      removeFromCart(id);
+      return;
+    }
+    setCartItems(prev => 
+      prev.map(item => 
+        item.id === id ? { ...item, quantity } : item
+      )
+    );
+  };
+
+  const removeFromCart = (id: string) => {
+    setCartItems(prev => prev.filter(item => item.id !== id));
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
   };
 
   const handleAppDownload = () => {
-    // Simulação de download do app
     alert("Em breve! O app ChapaBurger estará disponível nas lojas!");
   };
 
@@ -76,7 +110,7 @@ const Menu = () => {
   ];
 
   return (
-    <section id="cardapio" className="py-20 bg-black relative overflow-hidden">
+    <section id="cardapio" className="py-20 bg-black relative overflow-hidden w-full">
       {/* Fire particles background */}
       <div className="absolute inset-0 pointer-events-none">
         {fireParticles.map((particle) => (
@@ -110,24 +144,24 @@ const Menu = () => {
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
+      <div className="w-full px-6 relative z-10">
+        <div className="text-center mb-16 animate-fade-in max-w-7xl mx-auto">
           <div className="relative inline-block">
             <h2 className="text-4xl lg:text-7xl font-black text-cream mb-6 font-orbitron skull-shadow">
               NOSSO
               <br />
-              <span className="text-orange-500 gradient-text-orange text-glow-cream">CARDÁPIO</span>
+              <span className="text-yellow-400 gradient-text-yellow text-glow-cream">CARDÁPIO</span>
             </h2>
             <div className="absolute -top-4 -right-4">
-              <Skull className="w-8 h-8 text-orange-500 animate-pulse fire-effect" />
+              <Skull className="w-8 h-8 text-yellow-400 animate-pulse fire-effect" />
             </div>
           </div>
           <p className="text-xl text-cream/80 max-w-2xl mx-auto font-light font-exo skull-text">
-            Sabores únicos preparados com ingredientes selecionados e muito <span className="text-orange-500 font-bold">ROCK'N'ROLL</span>
+            Sabores únicos preparados com ingredientes selecionados e muito <span className="text-yellow-400 font-bold">ROCK N ROLL</span>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 max-w-7xl mx-auto">
           {menuItems.map((item, index) => (
             <div 
               key={index} 
@@ -143,34 +177,35 @@ const Menu = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <button
                   onClick={() => toggleLike(index)}
-                  className="absolute top-4 right-4 bg-black/90 backdrop-blur-sm rounded-full p-2 hover:bg-black transition-all duration-300 transform hover:scale-110 glow-effect-orange"
+                  className="absolute top-4 right-4 bg-black/90 backdrop-blur-sm rounded-full p-2 hover:bg-black transition-all duration-300 transform hover:scale-110 glow-effect-yellow"
                 >
                   <Heart 
-                    className={`w-5 h-5 transition-colors ${likedItems.includes(index) ? 'text-orange-500 fill-orange-500' : 'text-cream'}`}
+                    className={`w-5 h-5 transition-colors ${likedItems.includes(index) ? 'text-yellow-400 fill-yellow-400' : 'text-cream'}`}
                     strokeWidth={1.5}
                   />
                 </button>
-                {/* Skull overlay */}
                 <div className="absolute top-4 left-4">
-                  <Skull className="w-6 h-6 text-orange-500/60 animate-float" />
+                  <Skull className="w-6 h-6 text-yellow-400/60 animate-float" />
                 </div>
               </div>
               
               <div className="p-6">
                 <div className="flex items-center mb-2">
-                  <Skull className="w-5 h-5 text-orange-500 mr-2" />
+                  <Skull className="w-5 h-5 text-yellow-400 mr-2" />
                   <h3 className="text-xl font-bold text-black font-orbitron skull-shadow">{item.name}</h3>
                 </div>
                 <p className="text-black/70 text-sm mb-4 font-light leading-relaxed font-exo">{item.description}</p>
                 <div className="flex items-center justify-between">
-                  <div className="text-2xl font-black text-orange-500 gradient-text-orange skull-shadow">{item.price}</div>
-                  <Button 
-                    onClick={() => handleOrder(item.name)}
-                    className="bg-black hover:bg-black/80 text-cream group/btn transition-all duration-300 transform hover:scale-105 neon-border-orange skull-border"
-                  >
-                    <ShoppingCart className="w-4 h-4 mr-2 group-hover/btn:animate-pulse" strokeWidth={1.5} />
-                    PEDIR
-                  </Button>
+                  <div className="text-2xl font-black text-yellow-600 gradient-text-yellow skull-shadow">{item.price}</div>
+                  <div className="flex space-x-2">
+                    <Button 
+                      onClick={() => addToCart(item)}
+                      className="bg-yellow-400 hover:bg-yellow-300 text-black group/btn transition-all duration-300 transform hover:scale-105 font-orbitron"
+                    >
+                      <Plus className="w-4 h-4 mr-2 group-hover/btn:animate-pulse" strokeWidth={1.5} />
+                      ADICIONAR
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -178,8 +213,8 @@ const Menu = () => {
         </div>
 
         {/* Enhanced App Section */}
-        <div className="text-center animate-fade-in delay-1000">
-          <div className="bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 rounded-3xl p-8 max-w-5xl mx-auto interactive-card relative overflow-hidden skull-border">
+        <div className="text-center animate-fade-in delay-1000 max-w-7xl mx-auto">
+          <div className="bg-gradient-to-br from-yellow-400 via-yellow-500 to-orange-500 rounded-3xl p-8 interactive-card relative overflow-hidden skull-border">
             {/* Smoke effects */}
             <div className="absolute top-0 left-1/4 w-16 h-16 smoke-effect opacity-30" style={{animationDelay: '0s'}} />
             <div className="absolute top-0 right-1/4 w-12 h-12 smoke-effect opacity-20" style={{animationDelay: '1s'}} />
@@ -208,36 +243,36 @@ const Menu = () => {
                 <div className="space-y-6">
                   <div className="bg-black/20 rounded-2xl p-6 backdrop-blur-sm skull-border">
                     <p className="text-black/90 mb-6 font-exo text-lg leading-relaxed font-bold">
-                      💀 <strong>Mais segurança na entrega MORTAL</strong><br/>
-                      🔥 <strong>Preços e taxa de entrega DEVASTADORES</strong><br/>
-                      ⚡ <strong>Desconto fidelidade EXPLOSIVO</strong><br/>
-                      🎁 <strong>Ganhos e promoções INFERNAIS</strong><br/>
-                      💀 <strong>Pedidos mais rápidos que um RAIO</strong><br/>
-                      ⭐ <strong>Acompanhamento em tempo REAL</strong>
+                      <strong>Mais segurança na entrega MORTAL</strong><br/>
+                      <strong>Preços e taxa de entrega DEVASTADORES</strong><br/>
+                      <strong>Desconto fidelidade EXPLOSIVO</strong><br/>
+                      <strong>Ganhos e promoções INFERNAIS</strong><br/>
+                      <strong>Pedidos mais rápidos que um RAIO</strong><br/>
+                      <strong>Acompanhamento em tempo REAL</strong>
                     </p>
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <Button 
                       onClick={handleAppDownload}
-                      className="bg-black text-cream hover:bg-black/80 font-bold transform hover:scale-105 transition-all duration-300 px-8 py-3 text-lg font-orbitron glow-effect-orange skull-border"
+                      className="bg-black text-cream hover:bg-black/80 font-bold transform hover:scale-105 transition-all duration-300 px-8 py-3 text-lg font-orbitron glow-effect-yellow skull-border"
                     >
                       <Skull className="w-5 h-5 mr-2" />
                       BAIXAR APP
                     </Button>
                     
-                    <div className="bg-cream rounded-xl p-4 neon-border-orange animate-pulse-glow-orange skull-border">
+                    <div className="bg-cream rounded-xl p-4 neon-border-yellow animate-pulse-glow-yellow skull-border">
                       <QrCode className="w-16 h-16 text-black mx-auto mb-2" />
                       <p className="text-xs text-black font-bold font-exo">ESCANEIE AQUI</p>
                       <div className="flex justify-center mt-2">
-                        <Skull className="w-4 h-4 text-orange-500" />
+                        <Skull className="w-4 h-4 text-yellow-500" />
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="relative">
-                  <div className="bg-black rounded-3xl p-4 transform rotate-y-6 hover:rotate-y-0 transition-transform duration-500 glow-effect-orange skull-border">
+                  <div className="bg-black rounded-3xl p-4 transform rotate-y-6 hover:rotate-y-0 transition-transform duration-500 glow-effect-yellow skull-border">
                     <img 
                       src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=600&fit=crop&crop=center"
                       alt="ChapaBurger App Interface"
@@ -245,7 +280,7 @@ const Menu = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-2xl" />
                     <div className="absolute bottom-6 left-6 right-6">
-                      <div className="bg-orange-500 rounded-lg p-3 skull-border">
+                      <div className="bg-yellow-400 rounded-lg p-3 skull-border">
                         <div className="flex items-center justify-center mb-1">
                           <Skull className="w-5 h-5 text-black mr-2" />
                           <p className="text-black font-bold text-sm font-orbitron">ChapaBurger App</p>
@@ -255,15 +290,13 @@ const Menu = () => {
                     </div>
                   </div>
                   
-                  {/* Fire effect around the phone */}
                   <div className="absolute -inset-4 fire-effect opacity-20 rounded-full blur-xl animate-pulse" />
                   
-                  {/* Floating skulls around phone */}
                   <div className="absolute -top-4 -left-4 animate-float opacity-60">
-                    <Skull className="w-6 h-6 text-orange-500" />
+                    <Skull className="w-6 h-6 text-yellow-400" />
                   </div>
                   <div className="absolute -bottom-4 -right-4 animate-float opacity-60" style={{animationDelay: '1s'}}>
-                    <Skull className="w-8 h-8 text-orange-500" />
+                    <Skull className="w-8 h-8 text-yellow-400" />
                   </div>
                 </div>
               </div>
@@ -271,6 +304,14 @@ const Menu = () => {
           </div>
         </div>
       </div>
+
+      {/* Cart Component */}
+      <Cart 
+        items={cartItems}
+        onUpdateQuantity={updateCartQuantity}
+        onRemoveItem={removeFromCart}
+        onClearCart={clearCart}
+      />
     </section>
   );
 };
