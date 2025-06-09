@@ -1,104 +1,156 @@
-
 import { Button } from "@/components/ui/button";
-import { MapPin, Clock, Phone, ArrowRight } from "lucide-react";
+import { ChevronDown, MessageCircle, Flame } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const scrollToMenu = () => {
+    const menuSection = document.getElementById("cardapio");
+    if (menuSection) {
+      menuSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleWhatsApp = () => {
+    const phoneNumber = "5511999999999";
+    const message = "Olá! Gostaria de fazer um pedido.";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
-    <section className="relative min-h-screen bg-black overflow-hidden">
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-32 h-32 border border-amber-400/20 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-32 w-24 h-24 border border-amber-400/30 rounded-full animate-pulse delay-300"></div>
-        <div className="absolute bottom-40 left-40 w-40 h-40 border border-amber-400/20 rounded-full animate-pulse delay-700"></div>
-        <div className="absolute bottom-20 right-20 w-28 h-28 border border-amber-400/30 rounded-full animate-pulse delay-500"></div>
+    <div className="relative min-h-screen bg-black overflow-hidden">
+      {/* Enhanced Background Image with Parallax */}
+      <div 
+        className="absolute inset-0 parallax-bg"
+        style={{
+          backgroundImage: 'url("https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=1920&h=1080&fit=crop&crop=center")',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
       </div>
 
-      {/* Navigation */}
-      <nav className="relative z-20 flex justify-between items-center p-6 animate-fade-in">
-        <div className="text-white text-2xl font-black">
-          ChapaBurgues
-          <span className="text-amber-400 block text-sm font-light tracking-wide">CAMBUCI</span>
-        </div>
-        <div className="hidden md:flex space-x-8 text-white font-light">
-          <button onClick={() => scrollToSection('inicio')} className="hover:text-amber-400 transition-all duration-300 transform hover:scale-105">INÍCIO</button>
-          <button onClick={() => scrollToSection('cardapio')} className="hover:text-amber-400 transition-all duration-300 transform hover:scale-105">CARDÁPIO</button>
-          <button onClick={() => scrollToSection('sobre')} className="hover:text-amber-400 transition-all duration-300 transform hover:scale-105">SOBRE</button>
-          <button onClick={() => scrollToSection('contato')} className="hover:text-amber-400 transition-all duration-300 transform hover:scale-105">CONTATO</button>
-        </div>
-        <Button 
-          onClick={() => scrollToSection('cardapio')}
-          className="bg-amber-400 text-black hover:bg-amber-300 font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-        >
-          PEÇA JÁ
-        </Button>
-      </nav>
+      {/* Fire Particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {Array.from({length: 15}).map((_, i) => (
+          <div
+            key={i}
+            className="fire-particle absolute"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${80 + Math.random() * 20}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 2}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Smoke Effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        {Array.from({length: 6}).map((_, i) => (
+          <div
+            key={i}
+            className="smoke-effect absolute"
+            style={{
+              left: `${20 + i * 15}%`,
+              bottom: '10%',
+              width: '60px',
+              height: '60px',
+              animationDelay: `${i * 0.8}s`
+            }}
+          />
+        ))}
+      </div>
 
       {/* Main Content */}
-      <div id="inicio" className="relative z-10 flex flex-col lg:flex-row items-center justify-between px-6 py-20 max-w-7xl mx-auto">
-        <div className="lg:w-1/2 text-white mb-10 lg:mb-0 animate-fade-in delay-300">
-          <h1 className="text-6xl lg:text-8xl font-black mb-6 leading-none animate-scale-in">
-            CHAPA
-            <br />
-            <span className="text-amber-400">BURGUES</span>
-          </h1>
-          <p className="text-xl mb-8 text-white/90 font-light leading-relaxed animate-fade-in delay-500">
-            Os melhores hambúrgueres artesanais do Cambuci. 
-            Ingredientes frescos, sabor único e qualidade incomparável.
-          </p>
-          
-          {/* Info Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-all duration-300 transform hover:scale-105 animate-fade-in delay-700">
-              <Clock className="w-5 h-5 mx-auto mb-2 text-amber-400" strokeWidth={1.5} />
-              <div className="text-sm font-medium">ABERTO</div>
-              <div className="text-xs text-white/70">Todos os dias</div>
-              <div className="text-xs text-white/70">18h às 23h</div>
+      <div className="relative z-10 flex items-center justify-center min-h-screen">
+        <div className="text-center px-6 max-w-4xl mx-auto">
+          <div className="animate-bounce-in">
+            <div className="relative inline-block mb-8">
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-4 font-orbitron">
+                <span className="text-glow">CHAPA</span>
+                <br />
+                <span className="gradient-text">BURGUES</span>
+              </h1>
+              <div className="absolute -top-8 -right-8 animate-float">
+                <Flame className="w-16 h-16 text-amber-400 fire-effect" />
+              </div>
+              <div className="absolute -bottom-4 -left-4 animate-float" style={{animationDelay: '1s'}}>
+                <Flame className="w-12 h-12 text-red-500 fire-effect" />
+              </div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-all duration-300 transform hover:scale-105 animate-fade-in delay-900">
-              <MapPin className="w-5 h-5 mx-auto mb-2 text-amber-400" strokeWidth={1.5} />
-              <div className="text-sm font-medium">CAMBUCI</div>
-              <div className="text-xs text-white/70">São Paulo - SP</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-all duration-300 transform hover:scale-105 animate-fade-in delay-1000">
-              <Phone className="w-5 h-5 mx-auto mb-2 text-amber-400" strokeWidth={1.5} />
-              <div className="text-sm font-medium">DELIVERY</div>
-              <div className="text-xs text-white/70">WhatsApp</div>
-              <div className="text-xs text-white/70">(11) 99999-9999</div>
+            
+            <div className="bg-amber-400 text-black px-8 py-3 rounded-full inline-block mb-8 neon-border animate-pulse-glow">
+              <span className="text-2xl md:text-3xl font-black tracking-wider font-orbitron">CAMBUCI</span>
             </div>
           </div>
 
-          <Button 
-            size="lg" 
-            onClick={() => scrollToSection('cardapio')}
-            className="bg-amber-400 text-black hover:bg-amber-300 font-bold text-lg px-8 py-4 group transition-all duration-300 transform hover:scale-105 hover:shadow-xl animate-fade-in delay-1200"
-          >
-            VER CARDÁPIO
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={1.5} />
-          </Button>
-        </div>
+          <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed animate-fade-in delay-500 font-exo">
+            Os hambúrgueres mais <span className="text-amber-400 font-bold gradient-text">INCRÍVEIS</span> do bairro!
+            <br />
+            Feitos na chapa quente com ingredientes frescos e muito amor.
+          </p>
 
-        {/* Burger Image */}
-        <div className="lg:w-1/2 flex justify-center animate-fade-in delay-600">
-          <div className="relative">
-            <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-amber-400/20 hover:border-amber-400/40 transition-all duration-500 transform hover:scale-105 animate-scale-in delay-800">
-              <img 
-                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop&crop=center" 
-                alt="Hambúrguer Artesanal ChapaBurgues"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute -top-4 -right-4 bg-amber-400 text-black rounded-full w-16 h-16 flex items-center justify-center font-bold text-sm animate-pulse">
-              NOVO!
-            </div>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up delay-700">
+            <Button 
+              onClick={scrollToMenu}
+              size="lg"
+              className="bg-amber-400 hover:bg-amber-500 text-black font-bold px-8 py-4 text-lg interactive-card font-orbitron glow-effect"
+            >
+              <Flame className="w-5 h-5 mr-2 animate-pulse" />
+              VER CARDÁPIO
+              <ChevronDown className="w-5 h-5 ml-2 animate-bounce" strokeWidth={2} />
+            </Button>
+            
+            <Button 
+              onClick={handleWhatsApp}
+              size="lg" 
+              className="bg-white hover:bg-white/90 text-black font-bold px-8 py-4 text-lg interactive-card font-orbitron neon-border"
+            >
+              <MessageCircle className="w-5 h-5 mr-2" strokeWidth={2} />
+              PEDIR AGORA
+            </Button>
+          </div>
+
+          {/* Stats with enhanced styling */}
+          <div className="grid grid-cols-3 gap-8 mt-16 animate-fade-in delay-1000">
+            {[
+              { number: "500+", label: "Clientes Satisfeitos" },
+              { number: "15+", label: "Sabores Únicos" },
+              { number: "5★", label: "Avaliação Média" }
+            ].map((stat, index) => (
+              <div key={index} className="text-center interactive-card perspective-card" style={{animationDelay: `${1.2 + index * 0.2}s`}}>
+                <div className="bg-black/50 backdrop-blur-sm rounded-xl p-4 neon-border">
+                  <div className="text-3xl md:text-4xl font-black text-amber-400 mb-2 gradient-text font-orbitron">
+                    {stat.number}
+                  </div>
+                  <div className="text-white/80 text-sm font-light font-exo">{stat.label}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </section>
+
+      {/* Floating Elements */}
+      <div className="absolute bottom-10 left-10 animate-float opacity-20">
+        <div className="w-20 h-20 bg-amber-400 rounded-full fire-effect" />
+      </div>
+      <div className="absolute top-1/4 right-10 animate-float opacity-30" style={{animationDelay: '1.5s'}}>
+        <div className="w-16 h-16 bg-white rounded-full glow-effect" />
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <ChevronDown className="w-8 h-8 text-amber-400 animate-pulse" strokeWidth={2} />
+      </div>
+    </div>
   );
 };
 
