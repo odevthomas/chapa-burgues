@@ -2,9 +2,10 @@
 
 A dynamic and rebellious landing page for ChapaBurguer, featuring a metal/rock theme with interactive elements and a complete ordering system.
 
-![ChapaBurguer Preview](public/app.png)
+![lsgdigital(1)](https://github.com/user-attachments/assets/a8f5e180-90f8-4031-8a92-2fe98dfb308a)
 
 ## 🌟 Features
+
 
 - **Interactive UI Components**
   - Animated hero section with parallax effects
