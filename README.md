@@ -1,73 +1,162 @@
-# Welcome to your Lovable project
+# ChapaBurguer - Rock N' Roll Hamburger Landing Page 🍔
 
-## Project info
+A dynamic and rebellious landing page for ChapaBurguer, featuring a metal/rock theme with interactive elements and a complete ordering system.
 
-**URL**: https://lovable.dev/projects/49bab759-0dd0-4821-b674-a208109abbe2
+![ChapaBurguer Preview](public/app.png)
 
-## How can I edit this code?
+## 🌟 Features
 
-There are several ways of editing your application.
+- **Interactive UI Components**
+  - Animated hero section with parallax effects
+  - Dynamic menu cards with hover effects
+  - Shopping cart functionality
+  - Address lookup using CEP (Brazilian postal code)
+  - WhatsApp integration for orders
 
-**Use Lovable**
+- **Responsive Design**
+  - Mobile-first approach
+  - Adaptive layouts for all screen sizes
+  - Touch-friendly interface
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/49bab759-0dd0-4821-b674-a208109abbe2) and start prompting.
+- **Performance Optimized**
+  - Lazy loading images
+  - Optimized animations
+  - Fast page load times
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+- **Frontend Framework:** React 18 with TypeScript
+- **Build Tool:** Vite
+- **Styling:** 
+  - Tailwind CSS for utility-first styling
+  - shadcn/ui for UI components
+- **Animations:** Custom CSS animations and transitions
+- **Icons:** Lucide React icons
+- **State Management:** React Hooks
+- **Form Handling:** React Hook Form
+- **API Integration:** Fetch API
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 📥 Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+1. **Clone the repository**
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+git clone https://github.com/yourusername/chapa-burgues-splash.git
+cd chapa-burgues-splash
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. **Install dependencies**
+```sh
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. **Set up environment variables**
+```sh
+cp .env.example .env
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. **Start development server**
+```sh
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 🚀 Available Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build locally
+- `npm type-check` - Run TypeScript type checking
 
-**Use GitHub Codespaces**
+## 📁 Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+├── components/       # React components
+│   ├── ui/          # Reusable UI components
+│   └── layout/      # Layout components
+├── hooks/           # Custom React hooks
+├── lib/            # Utility functions and constants
+├── pages/          # Page components
+├── styles/         # Global styles and Tailwind config
+└── types/          # TypeScript type definitions
+```
 
-## What technologies are used for this project?
+## 🎨 UI Components
 
-This project is built with:
+The project uses [shadcn/ui](https://ui.shadcn.com/) for base components, with custom styling applied through Tailwind CSS. Key components include:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- Button
+- Card
+- Dialog
+- Sheet
+- Form elements
 
-## How can I deploy this project?
+## 🔧 Configuration
 
-Simply open [Lovable](https://lovable.dev/projects/49bab759-0dd0-4821-b674-a208109abbe2) and click on Share -> Publish.
+### Tailwind CSS
 
-## Can I connect a custom domain to my Lovable project?
+Tailwind configuration can be found in `tailwind.config.ts`. The project uses custom theme extensions for:
 
-Yes, you can!
+- Colors
+- Fonts
+- Animations
+- Shadows
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Vite
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Vite configuration is in `vite.config.ts`, with optimizations for:
+
+- Fast refresh
+- Path aliases
+- Build optimization
+
+## 📱 PWA Support
+
+This project is PWA-ready with:
+
+- Service worker
+- Manifest file
+- Offline support
+- Install prompts
+
+## 🌐 Deployment
+
+1. **Build the project**
+```sh
+npm run build
+```
+
+2. **Deploy using Lovable**
+- Visit [Lovable Project](https://lovable.dev/projects/49bab759-0dd0-4821-b674-a208109abbe2)
+- Click Share -> Publish
+
+### Custom Domain Setup
+
+To use a custom domain:
+
+1. Go to Project > Settings > Domains
+2. Click "Connect Domain"
+3. Follow the [domain setup guide](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+## 🙏 Acknowledgments
+
+- Design inspiration from rock/metal aesthetics
+- [shadcn/ui](https://ui.shadcn.com/) for base components
+- [Lucide](https://lucide.dev/) for icons
+- [Tailwind CSS](https://tailwindcss.com/) for styling
+
+## 📞 Support
+
+For support, email contact@chapaburguer.com or create an issue in this repository.

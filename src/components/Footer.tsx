@@ -9,23 +9,23 @@ const Footer = () => {
           <div className="animate-fade-in">
             <h3 className="text-2xl font-black mb-4">
               ChapaBurgues
-              <span className="text-amber-400 block text-lg font-light">CAMBUCI</span>
+              <span className="text-red-600 block text-lg font-light">CAMBUCI</span>
             </h3>
             <p className="text-white/70 font-light leading-relaxed">
               Os melhores hambúrgueres artesanais do Cambuci. Feito com amor e ingredientes frescos.
             </p>
             <div className="flex space-x-4 mt-4">
-              <a href="#" className="text-amber-400 hover:text-amber-300 transition-colors transform hover:scale-110 duration-300">
+              <a href="#" className="text-red-600 hover:text-red-700 transition-colors transform hover:scale-110 duration-700">
                 <Instagram className="w-5 h-5" strokeWidth={1.5} />
               </a>
-              <a href="#" className="text-amber-400 hover:text-amber-300 transition-colors transform hover:scale-110 duration-300">
+              <a href="#" className="text-red-600 hover:text-red-700 transition-colors transform hover:scale-110 duration-700">
                 <Phone className="w-5 h-5" strokeWidth={1.5} />
               </a>
             </div>
           </div>
 
-          <div className="animate-fade-in delay-300">
-            <h4 className="text-lg font-bold mb-4 text-amber-400 flex items-center">
+          <div className="animate-fade-in delay-700">
+            <h4 className="text-lg font-bold mb-4 text-red-600 flex items-center">
               <Clock className="w-5 h-5 mr-2" strokeWidth={1.5} />
               HORÁRIOS
             </h4>
@@ -36,13 +36,13 @@ const Footer = () => {
           </div>
 
           <div className="animate-fade-in delay-500">
-            <h4 className="text-lg font-bold mb-4 text-amber-400 flex items-center">
+            <h4 className="text-lg font-bold mb-4 text-red-600 flex items-center">
               <MapPin className="w-5 h-5 mr-2" strokeWidth={1.5} />
               CONTATO
             </h4>
             <div className="space-y-2 text-white/70 font-light">
               <div className="flex items-center">
-                <Phone className="w-4 h-4 mr-2 text-amber-400" strokeWidth={1.5} />
+                <Phone className="w-4 h-4 mr-2 text-red-600" strokeWidth={1.5} />
                 (11) 99999-9999
               </div>
               <div>📧 contato@chapaburgues.com.br</div>
@@ -55,7 +55,7 @@ const Footer = () => {
           <p className="font-light">
             &copy; 2024 ChapaBurgues Cambuci. Todos os direitos reservados. 
             <span className="inline-flex items-center ml-2">
-              Feito com <Heart className="w-4 h-4 mx-1 text-amber-400 fill-current" strokeWidth={1} /> em São Paulo
+              Feito com <Heart className="w-4 h-4 mx-1 text-red-600 fill-current" strokeWidth={1} /> em São Paulo
             </span>
           </p>
         </div>

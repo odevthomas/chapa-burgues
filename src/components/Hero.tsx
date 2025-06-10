@@ -1,6 +1,5 @@
-
 import { Button } from "@/components/ui/button";
-import { ChevronDown, MessageCircle, Skull } from "lucide-react";
+import { ChevronDown, Phone, Flame } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
@@ -33,7 +32,7 @@ const Hero = () => {
           backgroundImage: 'url("https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=1920&h=1080&fit=crop&crop=center")',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-red-900 to-red-900  from-black/90 via-black/70 to-black" />
       </div>
 
       {/* Fire Particles */}
@@ -69,7 +68,7 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Floating Skulls */}
+      {/* Floating Flames */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {Array.from({length: 6}).map((_, i) => (
           <div
@@ -82,7 +81,7 @@ const Hero = () => {
               animationDuration: `${4 + Math.random() * 2}s`
             }}
           >
-            <Skull className="w-8 h-8 text-orange-500" />
+           
           </div>
         ))}
       </div>
@@ -94,44 +93,43 @@ const Hero = () => {
             {/* Logo */}
             <div className="relative inline-block mb-8">
               <img 
-                src="/lovable-uploads/eb015478-29aa-4a77-87ba-c2019fccd0d2.png"
+                src="/chapaburgues.png"
                 alt="ChapaBurger Logo"
                 className="w-64 h-64 md:w-80 md:h-80 mx-auto mb-6 drop-shadow-2xl animate-float glow-effect-orange"
               />
             </div>
             
             <div className="relative inline-block mb-8">
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-cream mb-4 font-orbitron skull-shadow">
-                <span className="text-glow-cream">CHAPA</span>
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-cream mb-4 font-orbitron ">
+                <span className="text-glow-cream/20">O MELHOR </span>
                 <br />
-                <span className="gradient-text-orange">BURGER</span>
+                <span className="gradient-text-orange">BURGER </span>
               </h1>
-              <div className="absolute -top-8 -right-8 animate-float">
-                <Skull className="w-16 h-16 text-orange-500 fire-effect" />
-              </div>
+              
               <div className="absolute -bottom-4 -left-4 animate-float" style={{animationDelay: '1s'}}>
-                <Skull className="w-12 h-12 text-red-600 fire-effect" />
               </div>
             </div>
             
-            <div className="bg-orange-500 text-black px-8 py-3 rounded-full inline-block mb-8 neon-border-orange animate-pulse-glow-orange skull-border">
-              <span className="text-2xl md:text-3xl font-black tracking-wider font-orbitron">CAMBUCI</span>
+            <div className="bg-orange-500 text-black px-8 py-3 rounded-full inline-block mb-8 neon-border-orange animate-pulse-glow-orange ">
+              <span className="text-2xl md:text-3xl font-black tracking-wider font-orbitron">DO CAMBUCI</span>
             </div>
           </div>
 
-          <p className="text-xl md:text-2xl text-cream/90 mb-12 leading-relaxed animate-fade-in delay-500 font-exo skull-text">
-            Os hambúrgueres mais <span className="text-orange-400 font-bold gradient-text-orange">DEVASTADORES</span> do bairro!
-            <br />
-            Feitos na chapa quente com ingredientes frescos e muito <span className="text-red-500 font-bold">ROCK'N'ROLL</span>.
-          </p>
+         <p className="text-xl md:text-2xl text-white mb-12 leading-relaxed animate-fade-in delay-500 font-exo Flame-text">
+  Os hambúrgueres mais <span className="text-white font-bold">DEVASTADORES</span> do bairro!
+  <br />
+  Feitos na chapa quente com ingredientes frescos e muito <span className="text-white font-bold">ROCK'N'ROLL</span>.
+</p>
+
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up delay-700">
             <Button 
               onClick={scrollToMenu}
               size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-black font-bold px-8 py-4 text-lg interactive-card font-orbitron glow-effect-orange skull-border"
+              className="bg-orange-500 hover:bg-orange-600 text-black font-bold px-8 py-4 text-lg interactive-card font-orbitron glow-effect-orange 
+"
             >
-              <Skull className="w-5 h-5 mr-2 animate-pulse" />
+              <Flame className="w-5 h-5 mr-2 animate-pulse" />
               VER CARDÁPIO
               <ChevronDown className="w-5 h-5 ml-2 animate-bounce" strokeWidth={2} />
             </Button>
@@ -139,24 +137,25 @@ const Hero = () => {
             <Button 
               onClick={handleWhatsApp}
               size="lg" 
-              className="bg-cream hover:bg-cream/90 text-black font-bold px-8 py-4 text-lg interactive-card font-orbitron neon-border-orange skull-border"
+              className="bg-cream hover:bg-cream/90 text-black font-bold px-8 py-4 text-lg interactive-card font-orbitron neon-border-orange"
             >
-              <MessageCircle className="w-5 h-5 mr-2" strokeWidth={2} />
+              <Phone className="w-5 h-5 mr-2" strokeWidth={2} />
               PEDIR AGORA
             </Button>
           </div>
 
           {/* Stats with enhanced styling */}
-          <div className="grid grid-cols-3 gap-8 mt-16 animate-fade-in delay-1000">
+          <div className="grid grid-cols-3 gap-8 mb-16 mt-16 text-white animate-fade-in delay-1000">
             {[
-              { number: "666+", label: "Almas Satisfeitas", icon: <Skull className="w-6 h-6" /> },
-              { number: "13+", label: "Sabores Mortais", icon: <Skull className="w-6 h-6" /> },
-              { number: "5★", label: "Do Inferno", icon: <Skull className="w-6 h-6" /> }
+              { number: "666+", label: "Almas Satisfeitas", icon: <Flame className="w-6 h-6" /> },
+              { number: "13+", label: "Sabores Mortais", icon: <Flame className="w-6 h-6" /> },
+              { number: "5★", label: "Do Inferno", icon: <Flame className="w-6 h-6" /> }
             ].map((stat, index) => (
               <div key={index} className="text-center interactive-card perspective-card" style={{animationDelay: `${1.2 + index * 0.2}s`}}>
-                <div className="bg-black/70 backdrop-blur-sm rounded-xl p-4 neon-border-orange skull-border">
+                <div className="bg-black/70 backdrop-blur-sm rounded-xl p-4 neon-border-orange 
+  ">
                   <div className="text-orange-500 mb-2">{stat.icon}</div>
-                  <div className="text-3xl md:text-4xl font-black text-orange-400 mb-2 gradient-text-orange font-orbitron skull-shadow">
+                  <div className="text-3xl md:text-4xl font-black text-orange-400 mb-2 gradient-text-orange font-orbitron ">
                     {stat.number}
                   </div>
                   <div className="text-cream/80 text-sm font-light font-exo">{stat.label}</div>

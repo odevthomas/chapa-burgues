@@ -157,35 +157,35 @@
 
   /* Yellow utilities for new color scheme */
   .text-yellow-400 {
-    color: #facc15;
+    color: #a70000;
   }
 
   .bg-yellow-400 {
-    background-color: #facc15;
+    background-color: #a70000;
   }
 
   .bg-yellow-300 {
-    background-color: #fde047;
+    background-color: #ac0101;
   }
 
   .bg-yellow-500 {
-    background-color: #eab308;
+    background-color: #f11b1b;
   }
 
   .hover\:bg-yellow-300:hover {
-    background-color: #fde047;
+    background-color: #ac0101;
   }
 
   .hover\:bg-yellow-400:hover {
-    background-color: #facc15;
+    background-color: #a70000;
   }
 
   .text-yellow-600 {
-    color: #ca8a04;
+    color: #f11b1b;
   }
 
   .gradient-text-yellow {
-    background: linear-gradient(45deg, #facc15, #ffd700, #eab308);
+    background: linear-gradient(45deg, #a70000, #f11b1b, #f11b1b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -193,18 +193,18 @@
 
   .glow-effect-yellow {
     box-shadow: 
-      0 0 20px #facc15 / 0.6,
-      0 0 40px #facc15 / 0.4,
-      0 0 60px #facc15 / 0.3;
+      0 0 20px #a70000 / 0.6,
+      0 0 40px #a70000 / 0.4,
+      0 0 60px #a70000 / 0.3;
     animation: glowYellow 2s ease-in-out infinite alternate;
   }
 
   .neon-border-yellow {
     @apply border-2;
-    border-color: #facc15;
+    border-color: #a70000;
     box-shadow: 
-      0 0 10px #facc15 / 0.5,
-      inset 0 0 10px #facc15 / 0.1;
+      0 0 10px #a70000 / 0.5,
+      inset 0 0 10px #a70000 / 0.1;
   }
 
   .animate-pulse-glow-yellow {
@@ -227,7 +227,7 @@
 
   .skull-border {
     border: 2px solid;
-    border-image: linear-gradient(45deg, #000, #facc15, #000) 1;
+    border-image: linear-gradient(45deg, #000, #a70000, #000) 1;
     position: relative;
   }
 
@@ -238,7 +238,7 @@
     left: -4px;
     right: -4px;
     bottom: -4px;
-    background: linear-gradient(45deg, #000, #facc15, #000);
+    background: linear-gradient(45deg, #000, #a70000, #000);
     border-radius: inherit;
     z-index: -1;
     opacity: 0.3;
@@ -246,7 +246,7 @@
 
   /* Fire and Smoke Effects - Enhanced */
   .fire-effect {
-    background: linear-gradient(45deg, #ff4500, #facc15, #ff6b00, #ffd700);
+    background: linear-gradient(45deg, #ff4500, #a70000, #ff6b00, #ffd700);
     background-size: 400% 400%;
     animation: fireFlicker 1.5s ease-in-out infinite alternate;
     filter: blur(1px) drop-shadow(0 0 8px #ff4500);
@@ -257,7 +257,7 @@
     position: absolute;
     width: 6px;
     height: 6px;
-    background: linear-gradient(45deg, #ff4500, #facc15, #ffd700);
+    background: linear-gradient(45deg, #ff4500, #a70000, #ffd700);
     border-radius: 50%;
     animation: fireParticle 3s linear infinite;
     filter: drop-shadow(0 0 4px #ff4500);
@@ -410,24 +410,24 @@
 
   @keyframes pulseGlowYellow {
     0%, 100% {
-      box-shadow: 0 0 20px #facc15 / 0.4;
+      box-shadow: 0 0 20px #a70000 / 0.4;
     }
     50% {
-      box-shadow: 0 0 40px #facc15 / 0.8, 0 0 60px #facc15 / 0.6;
+      box-shadow: 0 0 40px #a70000 / 0.8, 0 0 60px #a70000 / 0.6;
     }
   }
 
   @keyframes glowYellow {
     0%, 100% {
       box-shadow: 
-        0 0 20px #facc15 / 0.5,
-        0 0 40px #facc15 / 0.3;
+        0 0 20px #a70000 / 0.5,
+        0 0 40px #a70000 / 0.3;
     }
     50% {
       box-shadow: 
-        0 0 40px #facc15 / 0.8,
-        0 0 60px #facc15 / 0.5,
-        0 0 80px #facc15 / 0.3;
+        0 0 40px #a70000 / 0.8,
+        0 0 60px #a70000 / 0.5,
+        0 0 80px #a70000 / 0.3;
     }
   }
 
@@ -472,10 +472,10 @@
   .interactive-card {
     @apply transition-all duration-300 transform hover:scale-105 hover:rotate-1;
     @apply hover:shadow-2xl;
-    box-shadow: 0 10px 30px #facc15 / 0.2;
+    box-shadow: 0 10px 30px #a70000 / 0.2;
   }
 
   .interactive-card:hover {
-    box-shadow: 0 20px 40px #facc15 / 0.4;
+    box-shadow: 0 20px 40px #a70000 / 0.4;
   }
 }

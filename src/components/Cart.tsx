@@ -42,7 +42,7 @@ const Cart = ({ items, onUpdateQuantity, onRemoveItem, onClearCart }: CartProps)
       <div className="fixed bottom-6 right-6 z-50">
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          className="bg-yellow-400 hover:bg-yellow-300 text-black p-4 rounded-full shadow-2xl animate-pulse-glow-orange relative"
+          className="bg-red-600 hover:bg-red-800 text-black p-4 rounded-full shadow-2xl animate-pulse-glow-orange relative"
         >
           <ShoppingCart className="w-6 h-6" />
           {totalItems > 0 && (
@@ -111,7 +111,7 @@ const Cart = ({ items, onUpdateQuantity, onRemoveItem, onClearCart }: CartProps)
                   <div className="border-t border-black/20 pt-4 mb-6">
                     <div className="flex justify-between items-center mb-4">
                       <span className="text-xl font-bold text-black font-orbitron">TOTAL:</span>
-                      <span className="text-xl font-bold text-yellow-600">R$ {total.toFixed(2).replace('.', ',')}</span>
+                      <span className="text-xl font-bold text-red-600">R$ {total.toFixed(2).replace('.', ',')}</span>
                     </div>
                   </div>
 

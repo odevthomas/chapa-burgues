@@ -57,12 +57,12 @@ const Location = () => {
             <h2 className="text-4xl lg:text-6xl font-black mb-8 font-orbitron skull-shadow text-cream">
               VENHA
               <br />
-              <span className="text-yellow-400 gradient-text-yellow">NOS VISITAR!</span>
+              <span className="text-red-700 gradient-text-red">NOS VISITAR!</span>
             </h2>
             
             <div className="space-y-6">
               <div className="flex items-start space-x-4 group hover:scale-105 transition-transform duration-300 bg-cream/10 p-4 rounded-xl skull-border">
-                <MapPin className="w-6 h-6 mt-1 text-yellow-400" strokeWidth={1.5} />
+                <MapPin className="w-6 h-6 mt-1 text-red-700" strokeWidth={1.5} />
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-cream font-orbitron">ENDEREÇO</h3>
                   <p className="text-cream/80 font-light font-exo">
@@ -74,7 +74,7 @@ const Location = () => {
               </div>
 
               <div className="flex items-start space-x-4 group hover:scale-105 transition-transform duration-300 bg-cream/10 p-4 rounded-xl skull-border">
-                <Clock className="w-6 h-6 mt-1 text-yellow-400" strokeWidth={1.5} />
+                <Clock className="w-6 h-6 mt-1 text-red-700" strokeWidth={1.5} />
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-cream font-orbitron">FUNCIONAMENTO</h3>
                   <p className="text-cream/80 font-light font-exo">
@@ -85,7 +85,7 @@ const Location = () => {
               </div>
 
               <div className="flex items-start space-x-4 group hover:scale-105 transition-transform duration-300 bg-cream/10 p-4 rounded-xl skull-border">
-                <Phone className="w-6 h-6 mt-1 text-yellow-400" strokeWidth={1.5} />
+                <Phone className="w-6 h-6 mt-1 text-red-700" strokeWidth={1.5} />
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-cream font-orbitron">CONTATOS</h3>
                   <p className="text-cream/80 font-light font-exo">
@@ -96,7 +96,7 @@ const Location = () => {
               </div>
 
               <div className="flex items-start space-x-4 group hover:scale-105 transition-transform duration-300 bg-cream/10 p-4 rounded-xl skull-border">
-                <Instagram className="w-6 h-6 mt-1 text-yellow-400" strokeWidth={1.5} />
+                <Instagram className="w-6 h-6 mt-1 text-red-700" strokeWidth={1.5} />
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-cream font-orbitron">REDES SOCIAIS</h3>
                   <p className="text-cream/80 font-light font-exo">
@@ -115,12 +115,12 @@ const Location = () => {
                   placeholder="Digite seu CEP (apenas números)"
                   value={cep}
                   onChange={(e) => setCep(e.target.value.replace(/\D/g, '').slice(0, 8))}
-                  className="flex-1 px-4 py-2 rounded-lg bg-black text-cream border border-yellow-400 focus:outline-none focus:border-yellow-300"
+                  className="flex-1 px-4 py-2 rounded-lg bg-black text-cream border border-red-700 focus:outline-none focus:border-red-300"
                 />
                 <Button 
                   onClick={consultarCEP}
                   disabled={loading}
-                  className="bg-yellow-400 hover:bg-yellow-300 text-black font-bold font-orbitron"
+                  className="bg-red-700 hover:bg-red-300 text-black font-bold font-orbitron"
                 >
                   <Search className="w-4 h-4 mr-2" />
                   {loading ? "..." : "BUSCAR"}
@@ -128,11 +128,11 @@ const Location = () => {
               </div>
               
               {error && (
-                <p className="text-red-400 mt-2 font-exo">{error}</p>
+                <p className="text-red-700 mt-2 font-exo">{error}</p>
               )}
               
               {addressData && (
-                <div className="mt-4 p-4 bg-yellow-400/10 rounded-lg">
+                <div className="mt-4 p-4 bg-red-700/10 rounded-lg">
                   <p className="text-cream font-exo">
                     <strong>Endereço:</strong> {addressData.logradouro}<br/>
                     <strong>Bairro:</strong> {addressData.bairro}<br/>
@@ -152,7 +152,7 @@ const Location = () => {
               </Button>
               <Button 
                 onClick={openMaps}
-                className="w-full bg-yellow-400 hover:bg-yellow-300 text-black font-bold py-4 transform hover:scale-105 transition-all duration-300 group font-orbitron"
+                className="w-full bg-red-700 hover:bg-red-300 text-black font-bold py-4 transform hover:scale-105 transition-all duration-300 group font-orbitron"
               >
                 <Navigation className="w-5 h-5 mr-2 group-hover:animate-pulse" strokeWidth={1.5} />
                 VER NO MAPS
@@ -160,19 +160,14 @@ const Location = () => {
             </div>
           </div>
 
-          <div className="bg-cream rounded-2xl p-8 animate-fade-in delay-300 transform hover:scale-105 transition-all duration-500 skull-border">
-            <h3 className="text-2xl font-bold text-black mb-6 text-center font-orbitron">PET FRIENDLY</h3>
+          <div className=" rounded-2xl p-8 animate-fade-in delay-300 transform ">
             <div className="text-center">
               <img 
-                src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=300&h=200&fit=crop&crop=center"
+                src="/Ambiente Amigável para Animais.png"
                 alt="Ambiente pet friendly"
-                className="w-full h-32 object-cover rounded-lg mb-4"
+                className="w-full h-100 object-cover mb-4"
               />
-              <p className="text-black/90 leading-relaxed font-light font-exo">
-                Aqui tem um lugarzinho pro seu cãozinho que veio de longe! Petiscos 
-                para animais. Não esqueça de consultar nosso espaço dedicado para pets. 
-                Nosso espaço tem uma entrada especial, já que a sombra é muito boa.
-              </p>
+           
             </div>
           </div>
         </div>
